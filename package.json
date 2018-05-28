@@ -7,6 +7,9 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "mutt-forms": "^1.9.1",
+    "mutt-forms-vue": "^1.1.2",
+    "prettier": "~1.12.0",
     "vue": "^2.5.16"
   },
   "devDependencies": {
@@ -18,5 +21,8 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "prettier": {
+    "parser": "babylon"
+  }
 }

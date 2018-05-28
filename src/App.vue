@@ -1,17 +1,54 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Mutt Forms Vue</h1>
+    <mutt-vue
+      v-bind:schema="schema"
+      v-bind:options="options"
+      v-on:init="init"
+      v-on:callback="callback"
+      v-on:submit="submit"
+      ></mutt-vue>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  data() {
+      return {
+        schema: {
+          name: {
+            type: 'string'
+          },
+          email: {
+            type: 'string'
+          },
+          message: {
+            type: 'string'
+          }
+        },
+        options: {
+          fields: {
+            message: {
+              widget: 'textarea'
+            }
+          }
+        }
+      }
+  },
+  methods: {
+    init(form) {
+      this.form = form
+      console.log('Form init!')
+    },
+    callback(payload) {
+      console.log('Widget Callback: ',
+          JSON.stringify(payload, null, 2))
+    },
+    submit(form) {
+      console.log('Submission: ',
+          JSON.stringify(form.data(), null, 2))
+    }
   }
 }
 </script>
